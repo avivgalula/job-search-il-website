@@ -1,0 +1,32 @@
+body {
+  background-color: #edf0ff;
+}
+
+.app {
+  margin: 0 auto;
+  max-width: 81rem;
+  /* width: 65vw; */
+  padding: 0 2rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: rgb(206, 169, 222);
+  width: 100%;
+  min-height: 10rem;
+  margin-bottom: 1rem;
+}
+
+main {
+  background-color: rgb(255, 255, 255);
+  flex: 1;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 920px) {
+  .app {
+    padding: 0;
+  }
+}

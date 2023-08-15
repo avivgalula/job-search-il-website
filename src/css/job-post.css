@@ -1,0 +1,265 @@
+article {
+  cursor: pointer;
+  border-bottom: 1px solid #eae7fb;
+}
+
+article .preview-container {
+  /* background-color: rgb(223, 173, 173); */
+  direction: rtl;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+article .preview-container:hover {
+  background-color: #f9f9ff;
+}
+
+article h2 {
+  font-weight: 700;
+  width: 34rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+article .info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+article .info-header {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  color: red;
+}
+
+article .publish-time {
+  color: #868e96;
+}
+article .time-viewed {
+  color: #bac2d3;
+}
+
+article .info-header-details {
+  display: flex;
+  gap: 1rem;
+  background-color: #f9f9ff;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem 1rem;
+  border-radius: 0.62rem;
+}
+
+article .info-header-details div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+article .footer {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+article .footer div {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+article .btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.8rem;
+}
+
+article .btn {
+  background-color: violet;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3.4rem;
+  width: 3.4rem;
+  border-radius: 0.84rem;
+}
+
+article .bookmark-btn {
+  background-color: #f2f0ff;
+}
+
+article .bookmarks-icon {
+  stroke-width: 2;
+  stroke: #c6bdff;
+}
+
+article .job-link-btn {
+  font-size: 1.3rem;
+  padding: 0 1.6rem;
+  width: auto;
+  font-weight: 600;
+  display: flex;
+  gap: 0.8rem;
+  background-color: #fff;
+  border: 1px solid #e0dcff;
+  transition: background-color 0.15s ease-in-out;
+}
+
+article .job-link-btn:hover {
+  background-color: #c6bdff;
+}
+
+article .website-link-btn-icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+}
+article .job-type-text {
+  color: #000000a3;
+  max-width: 12rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+article .job-location-text {
+  color: #000000a3;
+}
+
+article .job-location-icon {
+  width: 16px;
+  height: 16px;
+  stroke: #000000a3;
+}
+
+article .job-type-icon {
+  width: 16px;
+  height: 16px;
+  stroke: #000000a3;
+}
+
+article .job-source {
+  font-weight: 600;
+}
+
+article .alljobs {
+  color: #fcbb5e;
+}
+
+article .jobmaster {
+  color: #f46c71;
+}
+
+article .drushim {
+  color: #ff7100;
+}
+
+article .viewd-icon {
+  fill: #5ee46c;
+}
+
+article .content-container {
+  padding: 1.5rem 2.5rem;
+  direction: rtl;
+  padding-bottom: 2.5rem;
+  display: flex;
+  background-color: #f9f9ff;
+}
+
+article .content-wrapper {
+  display: flex;
+  margin-bottom: 4rem;
+}
+
+article .content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+article .content-title {
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+article .description {
+  margin-bottom: 3rem;
+}
+
+article .content-text {
+  max-width: 65rem;
+}
+
+article .content-sidebar {
+  background-color: #eceaff;
+  border-radius: 1000rem;
+  width: 0.2rem;
+  height: 100%;
+  margin: 0 2rem;
+}
+
+@media screen and (max-width: 1000px) {
+  article h2 {
+    width: 30rem;
+  }
+
+  article .job-link-btn-text {
+    display: none;
+  }
+
+  article .job-link-btn {
+    height: 3.4rem;
+    width: 3.4rem;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  article .preview-container {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  article .content-sidebar {
+    display: none;
+  }
+
+  article .time-viewed {
+    display: none;
+  }
+
+  article h2 {
+    width: 70vw;
+    font-size: 1.4rem;
+  }
+
+  article .btns {
+    align-items: flex-start;
+  }
+
+  article .job-link-btn {
+    height: 2rem;
+    width: 2rem;
+    padding: 0;
+  }
+
+  article .bookmark-btn {
+    /* display: none; */
+    height: 2rem;
+    width: 2rem;
+  }
+}

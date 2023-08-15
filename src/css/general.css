@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
+  color: #312d4f;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.hide {
+  display: none !important;
+}
+
+.btn {
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+}
+
+a {
+  text-decoration: none;
+}
