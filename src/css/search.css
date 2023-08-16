@@ -1,0 +1,15 @@
+form {
+  display: flex;
+  gap: 1rem;
+  height: 3rem;
+  direction: rtl;
+}
+
+form input {
+  width: 20rem;
+  padding: 1rem;
+}
+
+form button {
+  width: 5rem;
+}

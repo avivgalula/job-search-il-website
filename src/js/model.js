@@ -1,5 +1,6 @@
 import { API_URL } from "./config.js";
 import { getJSON } from "./helpers.js";
+import { shuffle } from "./helpers.js";
 
 export const state = {
   search: {
@@ -30,14 +31,6 @@ const featchAllJobs = async function (query, page = 1) {
   return data;
 };
 
-const shuffle = (array) => {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-};
-
 export const loadSearchResults = async function (query, page = 1) {
   const [allJobs, drushim, jobMaster] = await Promise.all([
     featchAllJobs(query, page),
@@ -61,3 +54,11 @@ export const getLastQuery = function () {
 export const getCurrPage = function () {
   return state.search.page;
 };
+
+const init = async function () {
+  console.log("init");
+  const firstFeatch = await getJSON(`${API_URL}/`);
+  console.log(firstFeatch);
+};
+
+init();

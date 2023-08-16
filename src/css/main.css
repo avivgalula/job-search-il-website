@@ -14,19 +14,39 @@ body {
 
 header {
   background-color: rgb(206, 169, 222);
+  background-color: rgba(216, 187, 228, 0.177);
   width: 100%;
   min-height: 10rem;
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 main {
-  background-color: rgb(255, 255, 255);
   flex: 1;
   overflow-y: auto;
+  border-radius: 1.5625rem 1.5625rem 0rem 0rem;
+  border: 2px solid #d0ccf8;
+  background: #fff;
+  box-shadow: 0px 0px 31px 0px rgba(112, 112, 112, 0.03);
+  background: rgb(146, 129, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(128, 31, 255, 0.02) 0%,
+    rgba(255, 255, 255, 1) 9%
+  );
 }
 
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 1300px) {
   .app {
     padding: 0;
+  }
+
+  main {
+    border-radius: 0;
+    border: 0;
+    border-top: 2px solid #d0ccf8;
   }
 }

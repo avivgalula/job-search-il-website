@@ -9,6 +9,8 @@ article .preview-container {
   display: flex;
   justify-content: space-between;
   padding: 1.5rem 2.5rem;
+  padding: 2rem 2.5rem;
+  padding: 2.5rem 2.5rem;
   padding-bottom: 2.5rem;
 }
 
@@ -69,6 +71,8 @@ article .footer {
   display: flex;
   gap: 1rem;
   font-size: 0.9rem;
+  font-weight: 500;
+  direction: ltr;
 }
 
 article .footer div {
@@ -106,24 +110,47 @@ article .bookmarks-icon {
 article .job-link-btn {
   font-size: 1.3rem;
   padding: 0 1.6rem;
+  padding: 0 1.7rem;
   width: auto;
   font-weight: 600;
   display: flex;
   gap: 0.8rem;
   background-color: #fff;
   border: 1px solid #e0dcff;
-  transition: background-color 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, box-shadow 0.25s ease-in-out;
 }
 
 article .job-link-btn:hover {
-  background-color: #c6bdff;
+  background-color: #8a78fb;
+  box-shadow: 0px 0px 15px 0px rgba(198, 189, 255, 0.4);
+}
+
+article .job-link-btn:hover .website-link-btn-icon {
+  stroke: #fff;
+}
+article .job-link-btn:hover span {
+  color: #fff;
+}
+article .job-link-btn span {
+  color: #5e5695;
+  transition: color 0.1s ease-in-out;
 }
 
 article .website-link-btn-icon {
   width: 20px;
   height: 20px;
   stroke-width: 2;
+  transition: stroke 0.1s ease-in-out;
 }
+
+/* article .job-location {
+  direction: rtl;
+}
+
+article .job-type {
+  direction: rtl;
+} */
+
 article .job-type-text {
   color: #000000a3;
   max-width: 12rem;
@@ -131,22 +158,26 @@ article .job-type-text {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
+  color: #6f6b87;
 }
 
 article .job-location-text {
   color: #000000a3;
+  color: #6f6b87;
 }
 
 article .job-location-icon {
   width: 16px;
   height: 16px;
-  stroke: #000000a3;
+  stroke: #6f6b87;
+  stroke-width: 2;
 }
 
 article .job-type-icon {
   width: 16px;
   height: 16px;
-  stroke: #000000a3;
+  stroke: #6f6b87;
+  stroke-width: 2;
 }
 
 article .job-source {
@@ -186,7 +217,8 @@ article .content-section {
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
-  font-size: 1.2rem;
+  /* font-size: 1.2rem; */
+  font-size: 1.1rem;
   line-height: 1.7;
 }
 

@@ -1,9 +1,15 @@
+import { LOAD_MORE_DISTANCE } from "../config.js";
+
 class resultsView {
   _parentElement = document.querySelector("main");
+  _errorMessage = "לא נמצאו משרות לחיפוש זה";
+  _message = "לא נמצאו יותר משרות";
   _data;
 
   render(data) {
-    if (!data) return;
+    if (!data || data.length === 0) {
+      return;
+    }
     this._data = data;
     this._clear();
     const markup = this._generatMarkup();
@@ -21,29 +27,15 @@ class resultsView {
     this._parentElement.innerHTML = "";
   }
 
-  //   addHandlerScrollLoading(handler) {
-  //     let loadMore = true;
-  //     this._parentElement.addEventListener("scroll", () => {
-  //       const scrollBarPos = this._parentElement.scrollTop;
-  //       const height =
-  //         this._parentElement.scrollHeight - this._parentElement.clientHeight;
-
-  //       // Load more reasults when reach half the way
-  //       if (loadMore && scrollBarPos / height >= 0.5) {
-  //         console.log("load");
-  //         loadMore = false;
-  //       }
-  //     });
-  //   }
-
   addHandlerScrollLoading(handler) {
     this._parentElement.addEventListener("scroll", () => {
       // 1) Get a reference to last jobs post
       const allJobPost = this._parentElement.querySelectorAll("article");
-      const middleJobPost = allJobPost[Math.round(allJobPost.length * 0.66)];
-      if (!middleJobPost) return;
+      const jobPostPointer =
+        allJobPost[Math.round(allJobPost.length * LOAD_MORE_DISTANCE - 1)];
+      if (!jobPostPointer) return;
 
-      const elementPosition = middleJobPost.getBoundingClientRect();
+      const elementPosition = jobPostPointer.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
       // Check if the element is in or near the viewport
@@ -209,6 +201,51 @@ class resultsView {
         
         `;
   }
+
+  renderError(message = this._errorMessage) {
+    const markup = `
+        <div class="error-message">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke-width="1.5" stroke="currentColor" class="error-icon icon">
+              <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+              </svg>
+            </div>
+
+            <span>${message}</span>
+        </div>
+    `;
+    this._clear();
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  renderEndResultsMessage(message = this._message) {
+    const markup = `
+    <div class="error-message end-results-message">
+      <div>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke-width="1.5" stroke="currentColor" class="error-icon icon">
+          <path stroke-linecap="round" stroke-linejoin="round"
+          d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+          </svg>
+      </div>
+
+      <span>${message}</span>
+    </div>
+    `;
+    this._parentElement.insertAdjacentHTML("beforeend", markup);
+  }
+
+  renderSpinner = () => {
+    const markup = `
+    <div class="loader-container">
+      <span class="loader"></span>
+    </div>
+    `;
+    this._parentElement.innerHTML = "";
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
+  };
 }
 
 export default new resultsView();
