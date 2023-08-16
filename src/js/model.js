@@ -1,4 +1,5 @@
 import { API_URL } from "./config.js";
+import { REASULTS_PER_PAGE } from "./config.js";
 import { getJSON } from "./helpers.js";
 import { shuffle } from "./helpers.js";
 
@@ -6,7 +7,9 @@ export const state = {
   search: {
     query: "",
     results: [],
-    page: 1,
+    apiPage: 1,
+    resultsPage: 1,
+    resultsPerPage: REASULTS_PER_PAGE,
   },
   viewed: [],
   bookmarks: [],
@@ -38,13 +41,24 @@ export const loadSearchResults = async function (query, page = 1) {
     featchJobMaster(query, page),
   ]);
 
-  state.search.page = page;
+  console.log("next API page");
+  state.search.apiPage = page;
   state.search.query = query;
-  state.search.results = shuffle([...allJobs, ...drushim, ...jobMaster]);
+  state.search.results = shuffle([
+    ...state.search.results,
+    ...allJobs,
+    ...drushim,
+    ...jobMaster,
+  ]);
 };
 
-export const getSearchResults = function () {
-  return state.search.results;
+export const getSearchResults = function (page = state.search.resultsPage) {
+  state.search.resultsPage = page;
+
+  const start = (page - 1) * state.search.resultsPerPage;
+  const end = state.search.resultsPerPage * page;
+  console.log("next reasult page");
+  return state.search.results.slice(start, end);
 };
 
 export const getLastQuery = function () {
@@ -53,6 +67,10 @@ export const getLastQuery = function () {
 
 export const getCurrPage = function () {
   return state.search.page;
+};
+
+export const getCurrAPIPage = function () {
+  return state.search.apiPage;
 };
 
 const init = async function () {

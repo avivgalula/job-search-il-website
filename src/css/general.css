@@ -33,7 +33,7 @@ a {
   gap: 1rem;
   justify-content: center;
   align-items: center;
-  padding-top: 6rem;
+  padding: 6rem 0;
   direction: rtl;
 }
 

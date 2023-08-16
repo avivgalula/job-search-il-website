@@ -39,8 +39,11 @@ const controlScrollLoading = async function (atBottom) {
       const query = model.getLastQuery();
 
       // 2) Load next page of the jobs data
-      await model.loadSearchResults(query, model.getCurrPage() + 1);
-      const jobs = model.getSearchResults();
+      // await model.loadSearchResults(query, model.getCurrPage() + 1);
+      const jobs = model.getSearchResults(model.getCurrPage() + 1);
+      if (jobs.length < 10) {
+        await model.loadSearchResults(query, model.getCurrAPIPage() + 1);
+      }
       if (jobs.length === 0) throw new Error("no jobs found");
 
       // 3) Update jobs
