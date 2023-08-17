@@ -29,10 +29,12 @@ class resultsView {
 
   addHandlerScrollLoading(handler) {
     this._parentElement.addEventListener("scroll", () => {
-      // 1) Get a reference to last jobs post
-      const allJobPost = this._parentElement.querySelectorAll("article");
+      // Get a reference to last jobs post
+      const jobReasultsList = this._parentElement.querySelectorAll("article");
       const jobPostPointer =
-        allJobPost[Math.round(allJobPost.length * LOAD_MORE_DISTANCE - 1)];
+        jobReasultsList[
+          Math.round(jobReasultsList.length * LOAD_MORE_DISTANCE - 1)
+        ];
       if (!jobPostPointer) return;
 
       const elementPosition = jobPostPointer.getBoundingClientRect();
@@ -237,15 +239,28 @@ class resultsView {
     this._parentElement.insertAdjacentHTML("beforeend", markup);
   }
 
-  renderSpinner = () => {
+  renderSpinner() {
     const markup = `
     <div class="loader-container">
       <span class="loader"></span>
     </div>
     `;
-    this._parentElement.innerHTML = "";
+    this._clear();
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
-  };
+  }
+
+  renderUpdateSpinner() {
+    const markup = `
+    <div class="loader-container">
+      <span class="loader"></span>
+    </div>
+    `;
+    this._parentElement.insertAdjacentHTML("beforeend", markup);
+  }
+
+  removeSpinnder() {
+    this._parentElement.querySelector(".loader-container")?.remove();
+  }
 }
 
 export default new resultsView();

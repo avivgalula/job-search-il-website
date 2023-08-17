@@ -30,18 +30,18 @@ const controlSearchReasult = async function () {
   }
 };
 
-const controlScrollLoading = async function (atBottom) {
-  try {
-    if (atBottom && canLoad) {
-      canLoad = false;
-
+const controlScrollLoading = async function (isAtBottom) {
+  if (isAtBottom && canLoad) {
+    canLoad = false;
+    try {
       // 1) Get last search query
       const query = model.getLastQuery();
 
       // 2) Load next page of the jobs data
-      // await model.loadSearchResults(query, model.getCurrPage() + 1);
       const jobs = model.getSearchResults(model.getCurrPage() + 1);
+      // If jobs reasult start to get empty, try to fetch more data
       if (jobs.length < 10) {
+        resultsView.renderUpdateSpinner();
         await model.loadSearchResults(query, model.getCurrAPIPage() + 1);
       }
       if (jobs.length === 0) throw new Error("no jobs found");
@@ -51,9 +51,11 @@ const controlScrollLoading = async function (atBottom) {
 
       // 4) Determan if can load again
       canLoad = true;
+    } catch (err) {
+      resultsView.renderEndResultsMessage();
+    } finally {
+      resultsView.removeSpinnder();
     }
-  } catch (err) {
-    resultsView.renderEndResultsMessage();
   }
 };
 
@@ -62,9 +64,9 @@ const controlJobPost = function () {};
 // controlSearchReasult();
 
 const init = function () {
-  jobsPostView.addHandlerFullInfo();
-  resultsView.addHandlerScrollLoading(controlScrollLoading);
   searchView.addHandlerSubmit(controlSearchReasult);
+  resultsView.addHandlerScrollLoading(controlScrollLoading);
+  jobsPostView.addHandlerFullInfo();
 };
 
 init();

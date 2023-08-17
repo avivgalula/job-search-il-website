@@ -41,7 +41,6 @@ export const loadSearchResults = async function (query, page = 1) {
     featchJobMaster(query, page),
   ]);
 
-  console.log("next API page");
   state.search.apiPage = page;
   state.search.query = query;
   state.search.results = shuffle([
@@ -57,7 +56,7 @@ export const getSearchResults = function (page = state.search.resultsPage) {
 
   const start = (page - 1) * state.search.resultsPerPage;
   const end = state.search.resultsPerPage * page;
-  console.log("next reasult page");
+
   return state.search.results.slice(start, end);
 };
 
@@ -66,7 +65,7 @@ export const getLastQuery = function () {
 };
 
 export const getCurrPage = function () {
-  return state.search.page;
+  return state.search.resultsPage;
 };
 
 export const getCurrAPIPage = function () {
